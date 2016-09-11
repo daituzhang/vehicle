@@ -1,0 +1,17 @@
+<acme-navbar year="vehicles.options.year" make="vehicles.options.make" model="vehicles.options.model"></acme-navbar>
+
+<div class="container vehicles-container">
+
+
+  <div class="row no-gutter">
+    <a href="/detail/{{car.vin}}" class="col-sm-4 car" ng-repeat="car in vehicles.details">
+      <div class="car-back" style="background: url('{{vehicles.getCarThumb(car.thumbnailUrl)}}') no-repeat #fff">
+        <div class="car-hover"></div>
+      </div>
+      <div class="car-inner">
+        <h3>{{car.type}} {{car.year}} {{car.make}} {{car.model}} {{car.bodyStyle}}</h3>
+        <p><b>${{car.salePrice}}</b></p>
+      </div>
+    </a>
+  </div>
+</div>

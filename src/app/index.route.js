@@ -21,7 +21,23 @@
         controllerAs: 'car',
         resolve: {
           detailData: function(DetailService, $stateParams) {
-            return DetailService.get($stateParams.vin)
+            return DetailService.get($stateParams.vin);
+          }
+        }
+      })
+      .state('vehicles', {
+        url: '/vehicles/:year/:make/:model',
+        templateUrl: 'app/vehicles/vehicles.html',
+        controller: 'VehiclesController',
+        controllerAs: 'vehicles',
+        params: {
+          year: {squash: true, value: null},
+          make: {squash: true, value: null},
+          model: {squash: true, value: null}
+        },
+        resolve: {
+          vehiclesData: function(VehiclesService,$stateParams) {
+            return VehiclesService.get($stateParams.year,$stateParams.make,$stateParams.model);
           }
         }
       });

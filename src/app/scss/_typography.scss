@@ -1,0 +1,47 @@
+html {
+	text-transform: uppercase;
+  font-weight: 100;
+  font: 10px arial, sans-serif;
+
+}
+body {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  @include mobile-only {
+    font-size: 2rem;
+  }
+}
+h1 {
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 38px;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 3.6rem;
+  line-height: 1;
+  margin-bottom: 35px;
+}
+a {
+  color: inherit;
+  &:hover {
+    color: inherit;
+  }
+}
+p {
+  line-height: 1.8;
+  margin-bottom: 10px;
+  @include mobile-only {
+    line-height: 1.2;
+  }
+}
+.text-white {
+	color: $white;
+}
+.text-black {
+	color: $black;
+}
+.text-gold {
+	color: $gold;
+}

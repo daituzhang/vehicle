@@ -1,0 +1,61 @@
+.vehicles-container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 2rem;
+  h3 {
+    font-size: 1.5rem;
+  }
+  .car {
+    color: $white;
+    display: block;
+    height: 33vw;
+    overflow: hidden;
+    &:nth-child(odd){
+      .car-back:before {
+        background: linear-gradient(135deg, rgba($blue-dark,0) 0%,rgba($blue-dark,0.5) 50%,rgba($blue-dark,0.8) 70%,rgba($blue-dark,0.8) 100%);
+
+      }
+    }
+    &:hover {
+      .car-back {
+        transform: scale(1.1);
+      }
+      .car-hover {
+        background: rgba($red,0.5);
+      }
+      &:nth-child(odd) .car-hover{
+        background: rgba($blue-dark, 0.5);
+      }
+    }
+  }
+  .car-back {
+    width: 100%;
+    height: 100%;
+    background-size: cover !important;
+    background-position: 50% 50% !important;
+    transition: all .5s ease;
+    &:before {
+      content: "";
+      @include overlap;
+      width: 100%;
+      height: 100%;
+      transition: all .5s ease;
+      background: linear-gradient(135deg, rgba($red,0) 0%,rgba($red,0.5) 50%,rgba($red,0.8) 70%,rgba($red,0.8) 100%);
+    }
+  }
+  .car-hover {
+    width: 100%;
+    height: 100%;
+    background-size: cover !important;
+    background-position: 50% 50% !important;
+    transition: all .5s ease;
+  }
+  .car-inner {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    width: 70%;
+    text-align: right;
+  }
+}

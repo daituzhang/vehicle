@@ -6,8 +6,9 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, $locationProvider, toastrConfig) {
     // Enable log
+    $locationProvider.html5Mode(true);
     $logProvider.debugEnabled(true);
 
     // Set options third-party lib

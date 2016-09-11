@@ -2,8 +2,16 @@
  *  If you want to override some bootstrap variables, you have to change values here.
  *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
  */
+
+@import "scss/variables";
+@import "scss/reset";
+@import "scss/mixin";
+// General typography like web fonts and icon fonts, and some styles that can be used as mixins.
+@import "scss/typography";
+
+// Define your grid system
 $navbar-inverse-link-color: #5AADBB;
-$icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -19,6 +27,14 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
   padding: 0.2em 0;
 }
 
+.no-gutter {
+  margin: 0;
+  > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+  }
+}
+
 .thumbnail {
   height: 200px;
 
@@ -27,6 +43,9 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
   }
 }
 
+img {
+  max-width: 100%;
+}
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
