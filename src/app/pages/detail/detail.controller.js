@@ -9,6 +9,7 @@
   function DetailController(detailData,$log) {
     var vm = this;
     vm.noResult = false;
+    vm.features = false;
 
     //if didn't get data show no results
     if(detailData){
@@ -43,6 +44,14 @@
       }
       vm.slideRight = function() {
         vm.slideCur = vm.slideCur == vm.slideLength - 1 ? 0 : vm.slideCur + 1;
+      }
+    }
+
+    //mobile features 
+    function features(){
+      vm.features = false;
+      vm.setFeatures = function(value) {
+        vm.features = value;
       }
     }
 

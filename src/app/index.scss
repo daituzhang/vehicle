@@ -64,6 +64,50 @@ img {
 [ui-view].ng-leave-active {
   opacity: 0;
 }
+
+.mobile-only {
+  display: none !important;
+  @include mobile-only {
+    display: block !important;
+  }
+}
+
+.desktop-only {
+  @include tablet-mobile {
+    display: none !important;
+  }
+}
+
+.desktop-tablet-only {
+  @include mobile-only {
+    display: none !important;
+  }
+}
+
+.desktop-mobile-only {
+  display: none !important;
+  @include mobile-only {
+    display: block !important;
+  }
+  @include desktop-only {
+    display: block !important;
+  }
+}
+
+.tablet-only {
+  @include desktop-only {
+    display: none !important;
+  }
+  @include mobile-only {
+    display: none !important;
+  }
+}
+
+.tablet-mobile-only {
+  @include desktop-only {
+    display: none !important;
+  }
+}
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

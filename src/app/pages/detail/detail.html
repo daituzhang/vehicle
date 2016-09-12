@@ -32,9 +32,10 @@
   </div>
   <div class="container bottom-container">
     <div class="row">
-    <div class="col-sm-7" ng-if="!car.noResult">
-      <h3>Features:</h3>
-      <ul class="row detail-features">
+    <div class="col-sm-7 detail-features" ng-if="!car.noResult"  ng-class="{'open':vm.features}">
+      <h3 class="desktop-tablet-only">Features</h3>
+      <h3 class="mobile-only btn btn-info btn-features" ng-click="vm.features=!vm.features">Features <span class="glyphicon glyphicon-chevron-down"></span></h3>
+      <ul class="row">
         <li class="col-sm-4" ng-repeat="feature in car.detail.features track by $index">{{feature}}<div>
       </ul>
     </div>

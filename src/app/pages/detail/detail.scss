@@ -13,7 +13,10 @@
     margin-bottom: 30px;
   }
   h3 {
-    margin-top: 40px;
+    margin: 40px 0 20px;
+    span {
+      float: right;
+    }
   }
   ul {
     padding: 0;
@@ -50,9 +53,37 @@
       background: radial-gradient(center, ellipse cover, rgba($blue-light,0) 0%,rgba($blue-light,0) 40%,rgba($blue-light,0.8) 80%, rgba($blue-light,.9) 92%,rgba($blue-light,.9) 100%);
     }
   }
+  .btn-features {
+    font-size: 1.5rem;
+    transition: all .5s ease;
+    &:hover,&:active {
+      background-color: $blue-light;
+      color: $blue-dark;
+    }
+    span {
+      transition: all .5s ease;
+    }
+  }
   .detail-features {
-    font-size: 1.2rem;
-    line-height: 1.8;
+    ul {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+    @include mobile-only {
+      ul {
+        max-height: 0;
+        overflow: hidden;
+        transition: all .5s ease;
+      }
+      &.open {
+        ul {
+          max-height: 2000px;
+        }
+        span {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
   .arrow {
     @include center-y;
