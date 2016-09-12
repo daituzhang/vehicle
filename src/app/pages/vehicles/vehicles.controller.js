@@ -19,8 +19,8 @@
 
     //watch nav directive change and call vehiclesService
     $scope.$watch("options", function(newValue, oldValue) {
-      VehiclesService.get($scope.options.year,$scope.options.make,$scope.options.model).then(function(detail){
-        vm.details = detail.data;
+      VehiclesService.get($scope.options.year,$scope.options.make,$scope.options.model).then(function(details){
+        vm.details = details;
       }); 
     },true);
   }

@@ -24,24 +24,17 @@
         function getVehiclesComplete(response) {
           var all = response.data;
           //write the options for nav
-          var details = {
-            options: {
-              'year': year,
-              'make': make,
-              'model': model,
-            },
-            data: []
-          };
+          var details = [];
 
           //search the required vehicles
           angular.forEach(all, function(car, key) {
             if((!year||car.year==year) && (!make||car.make.toLowerCase()==make.toLowerCase()) && (!model||car.model.toLowerCase()==model.toLowerCase())) {
                getSingleDetail(car.vin).then(function(detail){
-                  details.data.push(detail);
+                  details.push(detail);
               }); 
             }
-          }, details.data);
-          
+          }, details);
+
           return details;
         }
 
