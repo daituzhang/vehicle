@@ -1,8 +1,9 @@
-<acme-navbar year="vehicles.options.year" make="vehicles.options.make" model="vehicles.options.model"></acme-navbar>
+<acme-navbar class="fixed" year="options.year" make="options.make" model="options.model"></acme-navbar>
 
 <div class="container vehicles-container">
-
-
+  <div class="container no-result" ng-if="vehicles.details.length < 1">
+    <p>No result Find</p>
+  </div>
   <div class="row no-gutter">
     <a href="/detail/{{car.vin}}" class="col-sm-4 car" ng-repeat="car in vehicles.details">
       <div class="car-back" style="background: url('{{vehicles.getCarThumb(car.thumbnailUrl)}}') no-repeat #fff">

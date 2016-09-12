@@ -9,6 +9,7 @@
   function VehiclesService($log,$http) {
     var apiHost = 'https://7d31xpvdm7.execute-api.us-east-1.amazonaws.com/yulu/vehicles/';
     return {
+      //get all vehicles
       get: function(year,make,model) {
         return $http.get(apiHost)
         .then(getVehiclesComplete)
@@ -22,6 +23,7 @@
         }
         function getVehiclesComplete(response) {
           var all = response.data;
+          //write the options for nav
           var details = {
             options: {
               'year': year,
@@ -30,6 +32,8 @@
             },
             data: []
           };
+
+          //search the required vehicles
           angular.forEach(all, function(car, key) {
             if((!year||car.year==year) && (!make||car.make.toLowerCase()==make.toLowerCase()) && (!model||car.model.toLowerCase()==model.toLowerCase())) {
                getSingleDetail(car.vin).then(function(detail){
@@ -37,6 +41,7 @@
               }); 
             }
           }, details.data);
+          
           return details;
         }
 

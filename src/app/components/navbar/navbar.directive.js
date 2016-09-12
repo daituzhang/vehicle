@@ -16,36 +16,65 @@
           model:'='
       },
       controller: NavbarController,
-      controllerAs: 'vm',
+      controllerAs: 'nav',
       bindToController: true
     };
 
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController($cookies,$window,$scope) {
       var vm = this;
-      vm.options = {
-        'Honda': [
-          {id:'Odssey', name:'Odssey'},
-          {id:'Civic', name:'Civic'},
-          {id:'Accord', name:'Accord'},
-          {id:'Pilot', name:'Pilot'},
-          {id:'CR-V', name:'CR-V'}
-        ],
-        'BMW': [
-          {id:'3 Series', name:'3 Series'}
-        ],
-        'Kia': [
-          {id:'Forte', name:'Forte'},
-          {id:'Soul', name:'Soul'}
-        ]
-      };
-      console.log(vm.model);
-      vm.selected = {id:vm.model, name:vm.model};
 
-      // "vm.creationDate" is available by directive option "bindToController: true"
+      //write user options to cookie
+      vm.setValue = function(value, select) {
+        if(select == 'model') {
+          vm.model = value;
+        }
+        $cookies.put('vehicle_' + select,value);
+      }
+
+
+      initModel();
+      navScroll();
+
+      //initial the model dropdown
+      function initModel(){
+        vm.options = {
+          'Honda': [
+            {id:'Odssey', name:'Odssey'},
+            {id:'Civic', name:'Civic'},
+            {id:'Accord', name:'Accord'},
+            {id:'Pilot', name:'Pilot'},
+            {id:'CR-V', name:'CR-V'}
+          ],
+          'BMW': [
+            {id:'3 Series', name:'3 Series'}
+          ],
+          'Kia': [
+            {id:'Forte', name:'Forte'},
+            {id:'Soul', name:'Soul'}
+          ]
+        };
+        vm.selected = {id:vm.model, name:vm.model};
+      }
+
+      //hide nav when scroll down
+      function navScroll (){
+        vm.lastScrollTop = 0;
+        vm.up = 1;
+
+        angular.element($window).bind("scroll", function() {
+          vm.st = window.pageYOffset;
+          if (vm.st > vm.lastScrollTop) {
+              vm.up = 0;
+          } else {
+              vm.up = 1;
+          }
+          $scope.$apply();
+          vm.lastScrollTop = vm.st;
+        });    
+      }
     }
   }
-
 })();

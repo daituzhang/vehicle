@@ -1,0 +1,51 @@
+<acme-navbar class="fixed" year="car.detail.year.toString()" make="car.detail.make" model="car.detail.model"></acme-navbar>
+
+<div class="detail-container">
+  <div class="no-result" ng-if="car.noResult">
+    <p>No result Find</p>
+  </div>
+  <div class="top-container container" ng-if="!car.noResult">  
+    <h1>{{car.detail.year}} {{car.detail.make}} {{car.detail.model}} {{car.detail.bodyStyle}}</h1>
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="detail-slide" ng-if="car.ifPhoto">
+          <span class="glyphicon glyphicon-menu-left arrow arrow-left" ng-click="car.slideLeft()"></span>
+          <div class="detail-slide-container">
+            <img ng-repeat="img in car.detail.mediumResPhotos track by $index" src="{{img}}" ng-class="{ 'active':$index==car.slideCur }" alt="cars-image{{$index}}">
+          </div>
+          <span class="glyphicon glyphicon-menu-right arrow arrow-right" ng-click="car.slideRight()"></span>
+        </div>
+        <div class="detail-placeholder" ng-if="!car.ifPhoto">
+          <img src="/assets/images/car_placeholder.jpg" alt="cars-image-placeholder">
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <ul class="detail-right">
+          <li>Price <span>${{car.detail.salePrice}}</span></li>
+          <li>Condition <span>{{car.detail.type}}</span></li>
+          <li>Mileage <span>{{car.detail.mileage}}</span></li>
+          <li>Transmission <span>{{car.detail.transmission}}</span></li>
+          <li>MPG <span>{{car.detail.combinedMileage}}</span></li>
+        </ul>
+      </div>
+    </div> 
+  </div>
+  <div class="container bottom-container">
+    <div class="row">
+    <div class="col-sm-7" ng-if="!car.noResult">
+      <h3>Features:</h3>
+      <ul class="row detail-features">
+        <li class="col-sm-4" ng-repeat="feature in car.detail.features track by $index">{{feature}}<div>
+      </ul>
+    </div>
+    <div class="col-sm-5">
+      <ui-gmap-google-map center='car.map.center' zoom='car.map.zoom'>
+        <ui-gmap-marker coords="car.marker.coords" idkey="car.marker.id">
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
+      <div id="price-history"></div>
+    </div>
+  </div>
+  </div>
+  
+</div>

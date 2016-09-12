@@ -1,0 +1,31 @@
+.main-container {
+  color: $white;
+  min-height: 500px;
+  height: 100vh;
+  background-color: $blue-dark;
+  width: 100%;
+  padding: 20px 0;
+  overflow: hidden;
+  acme-navbar {
+    background-color: $blue-light;
+    margin-bottom: 200px;
+  }
+  .nav-container {
+    @include mobile-only {
+      padding-top: 30px;
+    }
+  }
+  .nav-left {
+    display: none;
+  }
+  .nav-right {
+    color: $blue-dark;
+  }
+  .main-inner {
+    @include center-y;
+    width: 100%;
+  }
+  h1 {
+    text-align: center;
+  }
+}

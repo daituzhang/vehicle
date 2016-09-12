@@ -1,39 +1,37 @@
-<nav class="navbar navbar-static-top navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
+<nav class="nav" ng-class="{'open':nav.up}">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="/">
         <span class="glyphicon glyphicon-home"></span>
       </a>
     </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-      <ul class="nav navbar-nav">
-        <li class="active">
-          <select class="form-control" id="year" ng-model="vm.year">
+    <div class="nav-middle">
+      <ul class="nav-ul row">
+        <li class="nav-select col-sm-4">
+          <select class="form-control" id="year" ng-model="nav.year" ng-change="nav.setValue(nav.year,'year')">
             <option value="">Year</option>
             <option value="2010">2010</option>
             <option value="2016">2016</option>
             <option value="2017">2017</option>
           </select>
         </li>
-        <li>
-          <select class="form-control" id="make" ng-model="vm.make">
+        <li class="nav-select col-sm-4">
+          <select class="form-control" id="make" ng-model="nav.make" ng-change="nav.setValue(nav.make,'make')">
             <option value="">Make</option>
             <option value="Honda">Honda</option>
             <option value="BMW">BMW</option>
             <option value="Kia">Kia</option>
           </select>
         </li>
-        <li>
-          <select class="form-control" id="model" ng-model="vm.selected" ng-options="option.name for option in vm.options[vm.make] track by option.id">
+        <li class="nav-select col-sm-4">
+          <select class="form-control" id="model" ng-model="nav.selected" ng-options="option.name for option in nav.options[nav.make] track by option.id" ng-change="nav.setValue(nav.selected.id,'model')">
             <option value="">Model</option>
           </select>
         </li>
       </ul>
-
-      <ul class="nav navbar-nav navbar-right acme-navbar-text">
-        <li><a href="/vehicles/{{vm.year}}/{{vm.make}}/{{vm.selected.id}}" class="btn">search</a></li>
-      </ul>
+    </div>
+    <div class="nav-right ">
+      <a href="/vehicles/{{nav.year}}/{{nav.make}}/{{nav.selected.id}}"><span class="glyphicon glyphicon-search"></span></a>
     </div>
   </div>
 </nav>

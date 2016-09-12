@@ -19,12 +19,8 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
  */
 // bower:scss
 // endbower
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+body {
+  background-color: $blue-dark;
 }
 
 .no-gutter {
@@ -35,16 +31,38 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
-.thumbnail {
-  height: 200px;
-
-  img.pull-right {
-    width: 50px;
-  }
-}
+.no-result {
+  color: $white;
+  text-align: center;
+  background-color: $blue-dark;
+} 
 
 img {
   max-width: 100%;
+}
+
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  transition:all .5s ease;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+  acme-navbar:not(.fixed)  {
+    background-color: $blue-dark;
+  }
+}
+
+[ui-view].ng-leave {
+  opacity: 1; 
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
 }
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
